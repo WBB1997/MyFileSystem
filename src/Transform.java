@@ -3,6 +3,7 @@ import java.io.*;
 public class Transform {
     /**
      * 把对象转变成二进制
+     *
      * @param obj 待转换的对象
      * @return 返回二进制数组
      */
@@ -16,16 +17,16 @@ public class Transform {
             oos.writeObject(obj);
             return bos.toByteArray();
         } catch (IOException e) {
-//            log.warn("对象转换成二级制数据失败, {}", e);
+            e.printStackTrace();
         } finally {
-            if(oos != null) {
+            if (oos != null) {
                 try {
                     oos.close();
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
             }
-            if(bos != null) {
+            if (bos != null) {
                 try {
                     bos.close();
                 } catch (IOException e) {
@@ -38,6 +39,7 @@ public class Transform {
 
     /**
      * 把二进制数组的数据转回对象
+     *
      * @param b
      * @return
      */
@@ -50,16 +52,16 @@ public class Transform {
             ois = new ObjectInputStream(bis);
             return ois.readObject();
         } catch (ClassNotFoundException | IOException e) {
-//            log.warn("二进制数据转回对象失败, {}", e);
+            e.printStackTrace();
         } finally {
-            if(ois != null) {
+            if (ois != null) {
                 try {
                     ois.close();
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
             }
-            if(bis != null) {
+            if (bis != null) {
                 try {
                     bis.close();
                 } catch (IOException e) {
